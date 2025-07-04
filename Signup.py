@@ -2,6 +2,7 @@ from tkinter import *
 from tkinter import messagebox
 import mysql.connector
 import os
+from dotenv import load_dotenv
 
 def open_login():
     root.destroy()
@@ -18,12 +19,12 @@ def signup():
 
     if password == confirm_password:
         try:
-            # Establish a connection to MySQL database
+             # Establish a connection to MySQL database
             mydb = mysql.connector.connect(
-                host="localhost",
-                user="root",
-                password="Abhiruchi@25",
-                database="Email"
+                host=os.getenv("HOST"),
+                user=os.getenv("USER"),
+                password=os.getenv("PASSWORD"),
+                database=os.getenv("DATABASE")
             )
             mycursor = mydb.cursor()
 

@@ -3,6 +3,7 @@ from tkinter import messagebox
 import webbrowser
 import os
 import mysql.connector
+from dotenv import load_dotenv
 
 def open_signup():
     root.destroy()
@@ -10,12 +11,12 @@ def open_signup():
 
 def fetch_data(email, password):
     try:
-        # Establish connection to MySQL database
+         # Establish connection to MySQL database
         mydb = mysql.connector.connect(
-            host="localhost",
-            user="root",
-            password="Abhiruchi@25",
-            database="Email"
+            host=os.getenv("HOST"),
+            user=os.getenv("USER"),
+            password=os.getenv("PASSWORD"),
+            database=os.getenv("DATABASE")
         )
         mycursor = mydb.cursor()
 
